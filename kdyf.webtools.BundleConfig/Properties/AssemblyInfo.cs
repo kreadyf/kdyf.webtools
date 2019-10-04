@@ -6,10 +6,10 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("BundleConfig")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("A helper library to configure BundleTransformer bundles & files within the web.config, in order to avoid recompilation.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("BundleConfig")]
+[assembly: AssemblyCompany("www.kreadyf.com")]
+[assembly: AssemblyProduct("kdyf.webtools.BundleConfig")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
