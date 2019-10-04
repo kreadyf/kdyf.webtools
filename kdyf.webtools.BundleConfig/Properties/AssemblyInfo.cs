@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("BundleConfig")]
+[assembly: AssemblyTitle("kdyf.webtools.BundleConfig")]
 [assembly: AssemblyDescription("A helper library to configure BundleTransformer bundles & files within the web.config, in order to avoid recompilation.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("www.kreadyf.com")]
