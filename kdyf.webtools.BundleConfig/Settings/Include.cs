@@ -1,6 +1,6 @@
 ﻿using System.Configuration;
 
-namespace BundleConfig.Settings
+namespace kdyf.webtools.BundleConfig.Settings
 {
     internal class Include : ConfigurationElement
     {

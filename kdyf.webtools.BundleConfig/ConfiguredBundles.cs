@@ -1,11 +1,9 @@
-﻿using BundleConfig.Settings;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Optimization;
+using kdyf.webtools.BundleConfig.Settings;
 using Bundle = System.Web.Optimization.Bundle;
-
-using settings = BundleConfig.Settings;
 
 namespace BundleConfig
 {
@@ -15,15 +13,15 @@ namespace BundleConfig
         {
             get
             {
-                return BundleConfig.Settings.BundleConfig.Settings.Bundles.Cast<settings.Bundle>().Select(bundle =>
+                return kdyf.webtools.BundleConfig.Settings.BundleConfiguration.Settings.Bundles.Cast<kdyf.webtools.BundleConfig.Settings.Bundle>().Select(bundle =>
                 {
                     var res = new Bundle(bundle.VirtualPath);
 
-                    res.Include(bundle.Files.Cast<settings.Include>().Select(file => file.VirtualPath).ToArray());
+                    res.Include(bundle.Files.Cast<Include>().Select(file => file.VirtualPath).ToArray());
                     foreach (IncludeDirectory dir in bundle.Directories)
                         res.IncludeDirectory(dir.VirtualPath, string.IsNullOrEmpty(dir.Pattern) ? "" : dir.Pattern, dir.IncludeSubdirectories);
 
-                    foreach (settings.Transformer tf in bundle.Transformers)
+                    foreach (Transformer tf in bundle.Transformers)
                     {
                         string[] typeInfo = tf.Value.Split(',').Select(s => s.Trim()).ToArray();
 

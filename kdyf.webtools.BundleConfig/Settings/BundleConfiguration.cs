@@ -1,12 +1,12 @@
 ﻿using System.Configuration;
 
-namespace BundleConfig.Settings
+namespace kdyf.webtools.BundleConfig.Settings
 {
-    public class BundleConfig : ConfigurationSection
+    public class BundleConfiguration : ConfigurationSection
     {
-        private static BundleConfig settings;
+        private static BundleConfiguration settings;
 
-        public static BundleConfig Settings
+        public static BundleConfiguration Settings
         {
             get
             {
@@ -16,7 +16,7 @@ namespace BundleConfig.Settings
                     System.Web.Configuration.WebConfigurationManager.OpenWebConfiguration("~");
                 //: ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
 
-                settings = config.GetSection("BundleConfig") as BundleConfig;
+                settings = config.GetSection("BundleConfig") as BundleConfiguration;
 
                 return settings;
             }

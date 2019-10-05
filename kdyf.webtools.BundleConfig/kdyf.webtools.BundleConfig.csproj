@@ -81,7 +81,7 @@
     <Compile Include="ConfiguredBundles.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings\Bundle.cs" />
-    <Compile Include="Settings\BundleConfig.cs" />
+    <Compile Include="Settings\BundleConfiguration.cs" />
     <Compile Include="Settings\Include.cs" />
     <Compile Include="Settings\IncludeDirectory.cs" />
     <Compile Include="Settings\Transformer.cs" />
