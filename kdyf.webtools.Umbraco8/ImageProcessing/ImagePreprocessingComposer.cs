@@ -17,10 +17,10 @@ using Umbraco.Core.Services.Implement;
 
 namespace kdyf.webtools.Umbraco8.ImageProcessing
 {
-    [RuntimeLevel(MinLevel = RuntimeLevel.Run)]
-    public class ImagePreprocessingComposer : ComponentComposer<ImagePreprocessingComponent>
-    {
-    }
+    //[RuntimeLevel(MinLevel = RuntimeLevel.Run)]
+    //public class ImagePreprocessingComposer : ComponentComposer<ImagePreprocessingComponent>
+    //{
+    //}
 
     public class ImagePreprocessingComponent : IComponent
     {
