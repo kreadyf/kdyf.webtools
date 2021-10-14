@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Umbraco.Core;
 using Umbraco.Core.Composing;
@@ -42,7 +43,7 @@ namespace kdyf.webtools.Umbraco8.ImageProcessing
 
         public void Initialize()
         {
-            MediaService.Saving += MediaService_Saving;
+            MediaService.Saved += MediaService_Saving;
         }
 
         private void MediaService_Saving(IMediaService sender, Umbraco.Core.Events.SaveEventArgs<Umbraco.Core.Models.IMedia> e)
@@ -59,15 +60,33 @@ namespace kdyf.webtools.Umbraco8.ImageProcessing
                     {
                         string fullPath = _mediaFileSystem.GetFullPath(path);
 
-                        var inStream = sender.GetMediaFileContentStream(fullPath);
-
-                        using (var outStream = new MemoryStream())
+                        Stream inStream = null;
+                        int c = 0;
+                        do
                         {
-                            using (ImageFactory imageFactory = new ImageFactory(preserveExifData: false))
+                            c++;
+                            inStream = sender.GetMediaFileContentStream(fullPath);
+                            if (inStream == null)
                             {
-                                var image = imageFactory.Load(inStream).AutoRotate().Save(outStream);
+                                Thread.Sleep(1000);
+                            }
+                            else
+                            {
+                                c = 6;
+                            }
 
-                                sender.SetMediaFileContent(fullPath, outStream);
+                        } while (c < 6);
+
+                        if (inStream != null)
+                        {
+                            using (var outStream = new MemoryStream())
+                            {
+                                using (ImageFactory imageFactory = new ImageFactory(preserveExifData: false))
+                                {
+                                    var image = imageFactory.Load(inStream).AutoRotate().Save(outStream);
+
+                                    sender.SetMediaFileContent(fullPath, outStream);
+                                }
                             }
                         }
                     }
